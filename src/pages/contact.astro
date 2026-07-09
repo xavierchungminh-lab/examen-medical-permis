@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import { PHONE_DISPLAY, PHONE_TEL, EMAIL, CENTRES } from '../consts.js';
+
+const title = "Contact & Prise de Rendez-vous — Examen Médical Permis Genève";
+const description = "Contactez-nous pour prendre rendez-vous pour votre examen médical de permis de conduire à Genève, niveau 1 ou niveau 2.";
+---
+<BaseLayout title={title} description={description} path="/contact/">
+
+  <section class="section page-hero">
+    <div class="container">
+      <span class="eyebrow"><Icon name="phone" size={14}/> Contact</span>
+      <h1>Prendre rendez-vous pour votre examen médical</h1>
+      <p class="hero-lead">Appelez-nous directement ou remplissez le formulaire ci-dessous : nous vous recontactons sous 24 à 48h ouvrées pour fixer votre rendez-vous.</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container contact-grid">
+      <div class="permit-card contact-info">
+        <h2>Nos coordonnées</h2>
+        <a href={`tel:${PHONE_TEL}`} class="contact-line"><Icon name="phone" size={18}/> {PHONE_DISPLAY}</a>
+        <a href={`mailto:${EMAIL}`} class="contact-line"><Icon name="cross" size={18}/> {EMAIL}</a>
+
+        <h3 class="contact-sub">Nos centres</h3>
+        <ul class="contact-centres">
+          {CENTRES.map(c => (
+            <li><Icon name="pin" size={15}/> <strong>{c.name}</strong> — {c.street}, {c.zip} {c.city}</li>
+          ))}
+        </ul>
+        <a href="/centres-geneve/" class="btn btn-ghost">Voir les horaires et itinéraires</a>
+      </div>
+
+      <div class="permit-card contact-form-card">
+        <h2>Formulaire de rendez-vous</h2>
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/merci/" class="contact-form">
+          <input type="hidden" name="form-name" value="contact" />
+          <p class="hidden-field">
+            <label>Ne pas remplir : <input name="bot-field" /></label>
+          </p>
+
+          <div class="form-row">
+            <label for="name">Nom et prénom *</label>
+            <input id="name" name="name" type="text" required autocomplete="name" />
+          </div>
+
+          <div class="form-row form-row-2">
+            <div>
+              <label for="phone">Téléphone *</label>
+              <input id="phone" name="phone" type="tel" required autocomplete="tel" />
+            </div>
+            <div>
+              <label for="email">E-mail *</label>
+              <input id="email" name="email" type="email" required autocomplete="email" />
+            </div>
+          </div>
+
+          <div class="form-row form-row-2">
+            <div>
+              <label for="level">Type d'examen</label>
+              <select id="level" name="level">
+                <option value="Niveau 1">Niveau 1 (dès 75 ans)</option>
+                <option value="Niveau 2">Niveau 2 (professionnel, C/D)</option>
+                <option value="Je ne sais pas">Je ne sais pas</option>
+              </select>
+            </div>
+            <div>
+              <label for="centre">Centre souhaité</label>
+              <select id="centre" name="centre">
+                {CENTRES.map(c => (<option value={c.name}>{c.name}</option>))}
+                <option value="Peu importe">Peu importe</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label for="message">Message (facultatif)</label>
+            <textarea id="message" name="message" rows="4" placeholder="Précisez vos disponibilités ou toute information utile."></textarea>
+          </div>
+
+          <div class="form-row consent-row">
+            <input id="consent" name="consent" type="checkbox" required />
+            <label for="consent">J'accepte que mes données soient utilisées pour traiter ma demande de rendez-vous, conformément à la <a href="/confidentialite/">politique de confidentialité</a>. *</label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Envoyer ma demande</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .hero-lead { max-width: 65ch; }
+  .contact-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 2rem; align-items: start; }
+  @media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } }
+
+  .contact-line { display: flex; align-items: center; gap: 0.6rem; font-family: var(--font-mono); font-weight: 600; color: var(--color-navy); margin-bottom: 0.75rem; }
+  .contact-line :global(svg) { color: var(--color-blue); }
+  .contact-sub { margin-top: 1.75rem; }
+  .contact-centres { list-style: none; padding: 0; margin: 0 0 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.9rem; color: var(--color-ink-soft); }
+  .contact-centres :global(svg) { color: var(--color-blue); }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1.1rem; margin-top: 1rem; }
+  .form-row { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 520px) { .form-row-2 { grid-template-columns: 1fr; } }
+  .form-row label { font-weight: 600; font-size: 0.9rem; color: var(--color-navy); }
+  .form-row input, .form-row select, .form-row textarea {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    padding: 0.7rem 0.85rem;
+    border: 1.5px solid var(--color-line);
+    border-radius: 8px;
+    background: var(--color-bg);
+    color: var(--color-ink);
+  }
+  .form-row input:focus, .form-row select:focus, .form-row textarea:focus {
+    outline: none;
+    border-color: var(--color-blue);
+  }
+  .consent-row { flex-direction: row; align-items: flex-start; gap: 0.6rem; }
+  .consent-row label { font-weight: 400; font-size: 0.85rem; color: var(--color-ink-soft); }
+  .consent-row input { margin-top: 0.2rem; }
+  .hidden-field { position: absolute; left: -9999px; }
+</style>

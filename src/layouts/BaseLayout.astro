@@ -1,0 +1,86 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Schema from '../components/Schema.astro';
+import Icon from '../components/Icon.astro';
+import '../styles/global.css';
+import { SITE_URL, PHONE_TEL, PHONE_DISPLAY } from '../consts.js';
+
+const {
+  title,
+  description,
+  path = '/',
+  ogImage = '/og-image.png',
+  noindex = false,
+} = Astro.props;
+
+const canonical = new URL(path, SITE_URL).toString();
+const fullTitle = title.includes('Genève') || title.length > 55 ? title : `${title} | Genève`;
+---
+<!doctype html>
+<html lang="fr-CH">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+  <meta name="geo.region" content="CH-GE" />
+  <meta name="geo.placename" content="Genève" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Examen Médical Permis de Conduire Genève" />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={new URL(ogImage, SITE_URL).toString()} />
+  <meta property="og:locale" content="fr_CH" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={fullTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={new URL(ogImage, SITE_URL).toString()} />
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="theme-color" content="#123456" />
+  <Schema />
+  <slot name="head" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Aller au contenu principal</a>
+  <Header />
+  <main id="main">
+    <slot />
+  </main>
+  <Footer />
+
+  <a href={`tel:${PHONE_TEL}`} class="floating-call" aria-label={`Appeler le ${PHONE_DISPLAY}`}>
+    <Icon name="phone" size={20} />
+  </a>
+
+  <style>
+    .floating-call {
+      position: fixed;
+      bottom: 1.25rem;
+      right: 1.25rem;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: var(--color-red);
+      color: #fff;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 22px rgba(200, 35, 42, 0.35);
+      z-index: 60;
+    }
+    @media (max-width: 720px) {
+      .floating-call { display: flex; }
+    }
+  </style>
+</body>
+</html>

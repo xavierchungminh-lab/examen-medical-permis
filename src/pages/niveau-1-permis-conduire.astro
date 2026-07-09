@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import { PHONE_DISPLAY, PHONE_TEL } from '../consts.js';
+
+const title = "Médecin Niveau 1 pour le Permis de Conduire à Genève";
+const description = "Examen médical niveau 1 à Genève pour conducteurs dès 75 ans : vue, audition, réflexes. Cabinets médicaux agréés, rendez-vous rapide.";
+---
+<BaseLayout title={title} description={description} path="/niveau-1-permis-conduire/">
+
+  <section class="section page-hero">
+    <div class="container">
+      <span class="eyebrow"><Icon name="shield" size={14}/> Niveau 1</span>
+      <h1>Examen médical niveau 1 pour conducteurs dès 75 ans</h1>
+      <p class="hero-lead">
+        En Suisse, tout titulaire d'un permis de conduire de catégorie B doit se soumettre à un contrôle médical
+        d'aptitude à la conduite <strong>dès son 75<sup>e</sup> anniversaire</strong>, puis le renouveler tous les deux ans.
+        Ce contrôle, appelé « examen niveau 1 », est réalisé par un médecin de premier recours ou un médecin-conseil reconnu par l'OCV.
+      </p>
+      <div class="hero-actions">
+        <a href="/contact/" class="btn btn-primary">Prendre rendez-vous</a>
+        <a href={`tel:${PHONE_TEL}`} class="btn btn-call"><Icon name="phone" size={16}/> {PHONE_DISPLAY}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container grid-2">
+      <div>
+        <h2>Qui est concerné ?</h2>
+        <ul class="check-list">
+          <li><Icon name="check" size={16}/> Conducteurs ayant atteint 75 ans, titulaires d'un permis catégorie B</li>
+          <li><Icon name="check" size={16}/> Renouvellement obligatoire tous les 2 ans après ce premier contrôle</li>
+          <li><Icon name="check" size={16}/> Conducteurs dont le médecin traitant ou l'OCV demande un contrôle ponctuel</li>
+        </ul>
+      </div>
+      <div class="permit-card">
+        <span class="permit-card__stamp">Bon à savoir</span>
+        <h3>Le rendez-vous en pratique</h3>
+        <p>Comptez environ <strong>30 minutes</strong>. Munissez-vous de votre pièce d'identité, de vos lunettes ou appareils auditifs habituels, et de la liste de vos traitements en cours.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Ce que comprend l'examen niveau 1</h2>
+      <div class="grid-3">
+        <article class="permit-card">
+          <Icon name="check" size={20} />
+          <h3>Vue et audition</h3>
+          <p>Test d'acuité visuelle (avec ou sans correction) et contrôle auditif de base, essentiels pour la sécurité au volant.</p>
+        </article>
+        <article class="permit-card">
+          <Icon name="wheel" size={20} />
+          <h3>Mobilité et réflexes</h3>
+          <p>Évaluation de la mobilité articulaire, de la coordination et du temps de réaction.</p>
+        </article>
+        <article class="permit-card">
+          <Icon name="cross" size={20} />
+          <h3>Anamnèse médicale</h3>
+          <p>Questionnaire sur les antécédents, les traitements en cours et d'éventuelles pathologies pouvant affecter la conduite.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2>Et ensuite ?</h2>
+      <p class="section-intro">À l'issue de l'examen, le médecin complète le formulaire officiel d'aptitude à la conduite. Selon le résultat :</p>
+      <ul class="check-list">
+        <li><Icon name="check" size={16}/> Le formulaire est transmis ou remis pour dépôt auprès de l'Office cantonal des véhicules (OCV) de Genève</li>
+        <li><Icon name="check" size={16}/> En cas de restriction (port de lunettes obligatoire, par exemple), une mention est ajoutée au permis</li>
+        <li><Icon name="check" size={16}/> Un nouveau rendez-vous vous sera rappelé pour le contrôle suivant, deux ans plus tard</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section cta-final">
+    <div class="container cta-final-inner">
+      <div>
+        <h2>Vous approchez de vos 75 ans ?</h2>
+        <p>Prenez rendez-vous dès maintenant pour votre examen niveau 1 dans l'un de nos trois cabinets genevois.</p>
+      </div>
+      <div class="hero-actions">
+        <a href="/contact/" class="btn btn-primary">Prendre rendez-vous</a>
+        <a href={`tel:${PHONE_TEL}`} class="btn btn-call"><Icon name="phone" size={16}/> {PHONE_DISPLAY}</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .hero-lead { max-width: 70ch; font-size: 1.05rem; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
+  .check-list { list-style: none; padding: 0; margin: 1.25rem 0; display: flex; flex-direction: column; gap: 0.75rem; }
+  .check-list li { display: flex; align-items: flex-start; gap: 0.6rem; color: var(--color-ink-soft); }
+  .check-list :global(svg) { color: var(--color-success); flex-shrink: 0; margin-top: 3px; }
+  .section-intro { max-width: 70ch; }
+  .cta-final { background: var(--color-navy); border-radius: 20px; margin-inline: auto; max-width: calc(var(--container) + 3rem); }
+  .cta-final-inner { display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; }
+  .cta-final h2, .cta-final p { color: #fff; }
+  .cta-final p { color: #C9D8E4; max-width: 50ch; }
+  .permit-card :global(> svg) { color: var(--color-blue); margin-bottom: 0.5rem; }
+</style>

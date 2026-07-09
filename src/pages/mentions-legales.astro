@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { PHONE_DISPLAY, EMAIL, CENTRES } from '../consts.js';
+
+const title = "Mentions Légales";
+const description = "Mentions légales du site examen-medical-permis.ch : éditeur, hébergement, responsabilité et propriété intellectuelle.";
+---
+<BaseLayout title={title} description={description} path="/mentions-legales/">
+  <section class="section legal">
+    <div class="container legal-container">
+      <h1>Mentions légales</h1>
+
+      <h2>Éditeur du site</h2>
+      <p>
+        Le présent site est édité par les cabinets médicaux « Examen Médical Permis de Conduire Genève »,
+        exploités à titre indépendant, dont les adresses sont :
+      </p>
+      <ul>
+        {CENTRES.map(c => (<li>{c.name} — {c.street}, {c.zip} {c.city}</li>))}
+      </ul>
+      <p>Téléphone : {PHONE_DISPLAY} — E-mail : {EMAIL}</p>
+      <p>
+        Les cabinets sont exploités par des médecins autorisés à pratiquer dans le canton de Genève,
+        inscrits au registre des professions médicales (MedReg) conformément à la loi fédérale sur les
+        professions médicales universitaires (LPMéd).
+      </p>
+
+      <h2>Hébergement</h2>
+      <p>
+        Le site est hébergé par Netlify, Inc., 44 Montgomery Street, Suite 300, San Francisco, CA 94104, États-Unis.
+      </p>
+
+      <h2>Nature des informations</h2>
+      <p>
+        Les contenus de ce site sont fournis à titre informatif et ne remplacent en aucun cas une consultation
+        médicale ni un avis juridique. Les informations relatives aux examens niveau 1 et niveau 2 sont présentées
+        de manière générale ; seul l'Office cantonal des véhicules (OCV) de Genève ou l'Office fédéral des routes
+        (OFROU) fait foi quant aux exigences légales applicables à votre situation personnelle.
+      </p>
+
+      <h2>Responsabilité</h2>
+      <p>
+        Malgré le soin apporté à la rédaction de ce site, aucune garantie n'est donnée quant à l'exactitude,
+        l'exhaustivité ou l'actualité des informations publiées. Les cabinets déclinent toute responsabilité
+        pour les dommages directs ou indirects résultant de l'utilisation de ce site ou des informations qu'il contient.
+      </p>
+
+      <h2>Propriété intellectuelle</h2>
+      <p>
+        L'ensemble des textes, images et éléments graphiques de ce site sont protégés par le droit d'auteur.
+        Toute reproduction, même partielle, est soumise à autorisation préalable.
+      </p>
+
+      <h2>Liens externes</h2>
+      <p>
+        Ce site peut contenir des liens vers des sites tiers (notamment des services cartographiques). Les
+        cabinets n'exercent aucun contrôle sur ces sites et déclinent toute responsabilité quant à leur contenu.
+      </p>
+
+      <h2>Droit applicable</h2>
+      <p>Les présentes mentions légales sont soumises au droit suisse. Tout litige relève de la compétence des tribunaux du canton de Genève.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-container { max-width: 78ch; }
+  .legal h2 { margin-top: 2rem; }
+  .legal ul { color: var(--color-ink-soft); }
+</style>

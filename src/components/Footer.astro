@@ -1,0 +1,121 @@
+---
+import Icon from './Icon.astro';
+import { PHONE_DISPLAY, PHONE_TEL, EMAIL, CENTRES } from '../consts.js';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">
+        <Icon name="cross" size={16} />
+        <span>Examen Médical Permis de Conduire</span>
+      </div>
+      <p class="footer-tagline">Cabinets médicaux agréés pour les examens d'aptitude à la conduite, niveau 1 et niveau 2, à Genève.</p>
+      <a href={`tel:${PHONE_TEL}`} class="footer-phone"><Icon name="phone" size={16}/> {PHONE_DISPLAY}</a>
+      <a href={`mailto:${EMAIL}`} class="footer-email">{EMAIL}</a>
+    </div>
+
+    <div>
+      <h3 class="footer-heading">Nos centres à Genève</h3>
+      <ul class="footer-centres">
+        {CENTRES.map(c => (
+          <li>
+            <Icon name="pin" size={14} />
+            <span>{c.name} — {c.street}, {c.zip} {c.city}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="footer-heading">Navigation</h3>
+      <ul class="footer-links">
+        <li><a href="/niveau-1-permis-conduire/">Examen niveau 1</a></li>
+        <li><a href="/niveau-2-permis-conduire/">Examen niveau 2</a></li>
+        <li><a href="/centres-geneve/">Nos centres à Genève</a></li>
+        <li><a href="/faq/">Questions fréquentes</a></li>
+        <li><a href="/contact/">Contact & rendez-vous</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="footer-heading">Informations légales</h3>
+      <ul class="footer-links">
+        <li><a href="/mentions-legales/">Mentions légales</a></li>
+        <li><a href="/confidentialite/">Confidentialité</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>© {year} Examen Médical Permis de Conduire Genève. Tous droits réservés.</p>
+    <p class="footer-note">Cabinets médicaux privés indépendants — non affiliés à l'Office cantonal des véhicules (OCV).</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-navy);
+    color: #C9D8E4;
+    padding: 3.5rem 0 1.5rem;
+    margin-top: 4rem;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 2.5rem;
+  }
+  @media (max-width: 860px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 700;
+    margin-bottom: 0.85rem;
+  }
+  .footer-tagline { color: #A9BFD1; font-size: 0.92rem; margin-bottom: 1rem; }
+  .footer-phone, .footer-email {
+    display: block;
+    color: #fff;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+  }
+  .footer-phone:hover, .footer-email:hover { color: #fff; text-decoration: underline; }
+  .footer-heading {
+    color: #fff;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 1rem;
+  }
+  .footer-centres, .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+  .footer-centres li { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.88rem; color: #B8CADA; }
+  .footer-links a { color: #C9D8E4; font-size: 0.92rem; }
+  .footer-links a:hover { color: #fff; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.12);
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: #8FA6B9;
+  }
+</style>

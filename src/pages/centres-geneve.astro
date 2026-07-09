@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import { PHONE_DISPLAY, PHONE_TEL, CENTRES } from '../consts.js';
+
+const title = "Nos Centres d'Examen Médical à Genève";
+const description = "Trois cabinets médicaux à Genève pour votre examen d'aptitude à la conduite : Cornavin, rue de Lausanne et Châtelaine. Adresses, horaires et accès.";
+---
+<BaseLayout title={title} description={description} path="/centres-geneve/">
+
+  <section class="section page-hero">
+    <div class="container">
+      <span class="eyebrow"><Icon name="pin" size={14}/> 3 emplacements</span>
+      <h1>Nos centres d'examen médical à Genève</h1>
+      <p class="hero-lead">Choisissez le cabinet le plus proche de chez vous ou de votre lieu de travail. Les trois centres proposent les examens niveau 1 et niveau 2.</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container centres-list">
+      {CENTRES.map(c => (
+        <article class="permit-card centre-card" id={c.id}>
+          <span class="permit-card__stamp">{c.name}</span>
+          <div class="centre-card-body">
+            <div>
+              <h2><Icon name="pin" size={18}/> {c.name}</h2>
+              <p class="centre-address">{c.street}<br/>{c.zip} {c.city}, Suisse</p>
+              <p class="centre-hours"><Icon name="clock" size={15}/> {c.hours}</p>
+              <p class="centre-note">{c.note}</p>
+              <div class="centre-actions">
+                <a href="/contact/" class="btn btn-primary">Prendre rendez-vous</a>
+                <a href={`tel:${PHONE_TEL}`} class="btn btn-call"><Icon name="phone" size={16}/> {PHONE_DISPLAY}</a>
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(c.street + ', ' + c.zip + ' ' + c.city)}`}
+                  target="_blank" rel="noopener noreferrer"
+                  class="btn btn-ghost"
+                >Itinéraire</a>
+              </div>
+            </div>
+            <div class="centre-map">
+              <iframe
+                title={`Carte — ${c.name}`}
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src={`https://maps.google.com/maps?q=${encodeURIComponent(c.street + ', ' + c.zip + ' ' + c.city + ', Suisse')}&z=15&output=embed`}
+                width="100%" height="230" style="border:0; border-radius: 10px;"
+              ></iframe>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .hero-lead { max-width: 65ch; }
+  .centres-list { display: flex; flex-direction: column; gap: 2rem; }
+  .centre-card { padding-top: 2.25rem; }
+  .centre-card-body { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2rem; align-items: start; }
+  @media (max-width: 780px) { .centre-card-body { grid-template-columns: 1fr; } }
+  .centre-card h2 { display: flex; align-items: center; gap: 0.5rem; font-size: 1.3rem; }
+  .centre-card :global(h2 svg) { color: var(--color-blue); }
+  .centre-address { font-weight: 600; color: var(--color-navy); }
+  .centre-hours { display: flex; align-items: center; gap: 0.5rem; color: var(--color-ink-soft); font-size: 0.92rem; }
+  .centre-note { font-size: 0.92rem; }
+  .centre-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem; }
+</style>

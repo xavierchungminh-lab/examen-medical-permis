@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import { PHONE_DISPLAY, PHONE_TEL } from '../consts.js';
+
+const title = "Médecin Niveau 2 — Aptitude à la Conduite Professionnelle à Genève";
+const description = "Examen médical niveau 2 à Genève pour chauffeurs professionnels et catégories C/D : bilan cardiovasculaire, neurologique et tests de vigilance.";
+---
+<BaseLayout title={title} description={description} path="/niveau-2-permis-conduire/">
+
+  <section class="section page-hero">
+    <div class="container">
+      <span class="eyebrow stamp-red-eyebrow"><Icon name="shield" size={14}/> Niveau 2</span>
+      <h1>Examen médical niveau 2 pour l'aptitude à la conduite professionnelle</h1>
+      <p class="hero-lead">
+        L'examen niveau 2 s'adresse aux conducteurs professionnels et aux titulaires des <strong>catégories C et D</strong>
+        (poids lourds, autocars, transport de personnes) ainsi qu'aux chauffeurs de taxi. Plus complet que le niveau 1,
+        il évalue l'ensemble des fonctions physiques et cognitives nécessaires à une conduite professionnelle sûre.
+      </p>
+      <div class="hero-actions">
+        <a href="/contact/" class="btn btn-primary">Prendre rendez-vous</a>
+        <a href={`tel:${PHONE_TEL}`} class="btn btn-call"><Icon name="phone" size={16}/> {PHONE_DISPLAY}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container grid-2">
+      <div>
+        <h2>Qui est concerné ?</h2>
+        <ul class="check-list">
+          <li><Icon name="check" size={16}/> Titulaires ou candidats aux catégories C, C1, D, D1 (poids lourds, cars, minibus)</li>
+          <li><Icon name="check" size={16}/> Chauffeurs de taxi et VTC soumis à autorisation cantonale</li>
+          <li><Icon name="check" size={16}/> Moniteurs de conduite professionnels</li>
+          <li><Icon name="check" size={16}/> Renouvellement périodique selon l'âge (tous les 5 ans, puis tous les ans dès 70 ans)</li>
+        </ul>
+      </div>
+      <div class="permit-card">
+        <span class="permit-card__stamp stamp-red">Bon à savoir</span>
+        <h3>Le rendez-vous en pratique</h3>
+        <p>Comptez environ <strong>45 minutes</strong>. Apportez votre pièce d'identité, vos lunettes/appareils auditifs et, si possible, un résumé de vos derniers examens médicaux (ECG, bilan sanguin).</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Ce que comprend l'examen niveau 2</h2>
+      <div class="grid-3">
+        <article class="permit-card">
+          <Icon name="cross" size={20} />
+          <h3>Bilan cardiovasculaire</h3>
+          <p>Prise de tension, auscultation cardiaque et, si nécessaire, ECG pour écarter tout risque lié à la conduite prolongée.</p>
+        </article>
+        <article class="permit-card">
+          <Icon name="wheel" size={20} />
+          <h3>Bilan neurologique</h3>
+          <p>Évaluation des réflexes, de la coordination motrice et de la sensibilité, déterminante pour les longs trajets.</p>
+        </article>
+        <article class="permit-card">
+          <Icon name="clock" size={20} />
+          <h3>Tests de vigilance</h3>
+          <p>Contrôle de l'attention et du temps de réaction, en particulier pour la prévention de la somnolence au volant.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2>Différences avec le niveau 1</h2>
+      <div class="permit-card compare-card">
+        <table class="compare-table">
+          <thead>
+            <tr><th>Critère</th><th>Niveau 1</th><th>Niveau 2</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Public concerné</td><td>Particuliers dès 75 ans</td><td>Professionnels, catégories C/D, taxi</td></tr>
+            <tr><td>Durée moyenne</td><td>30 minutes</td><td>45 minutes</td></tr>
+            <tr><td>Examens spécifiques</td><td>Vue, audition, réflexes</td><td>+ bilan cardiovasculaire et neurologique</td></tr>
+            <tr><td>Fréquence</td><td>Tous les 2 ans</td><td>Tous les 5 ans, puis annuel dès 70 ans</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta-final">
+    <div class="container cta-final-inner">
+      <div>
+        <h2>Conducteur professionnel à Genève ?</h2>
+        <p>Réservez votre créneau pour l'examen niveau 2 dans l'un de nos cabinets, avec un médecin habitué aux exigences de l'OCV.</p>
+      </div>
+      <div class="hero-actions">
+        <a href="/contact/" class="btn btn-primary">Prendre rendez-vous</a>
+        <a href={`tel:${PHONE_TEL}`} class="btn btn-call"><Icon name="phone" size={16}/> {PHONE_DISPLAY}</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .hero-lead { max-width: 70ch; font-size: 1.05rem; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
+  .check-list { list-style: none; padding: 0; margin: 1.25rem 0; display: flex; flex-direction: column; gap: 0.75rem; }
+  .check-list li { display: flex; align-items: flex-start; gap: 0.6rem; color: var(--color-ink-soft); }
+  .check-list :global(svg) { color: var(--color-success); flex-shrink: 0; margin-top: 3px; }
+  .permit-card :global(> svg) { color: var(--color-blue); margin-bottom: 0.5rem; }
+  .compare-card { overflow-x: auto; }
+  .compare-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  .compare-table th, .compare-table td { text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid var(--color-line); }
+  .compare-table th { font-family: var(--font-display); color: var(--color-navy); }
+  .cta-final { background: var(--color-navy); border-radius: 20px; margin-inline: auto; max-width: calc(var(--container) + 3rem); }
+  .cta-final-inner { display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; }
+  .cta-final h2, .cta-final p { color: #fff; }
+  .cta-final p { color: #C9D8E4; max-width: 50ch; }
+</style>

@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import { PHONE_DISPLAY, PHONE_TEL } from '../consts.js';
+
+const title = "Questions Fréquentes — Examen Médical Permis de Conduire Genève";
+const description = "Toutes les réponses sur l'examen médical du permis de conduire à Genève : coût, documents à apporter, validité, niveau 1 et niveau 2.";
+
+const faqs = [
+  {
+    q: "À partir de quel âge dois-je passer l'examen médical niveau 1 ?",
+    a: "L'examen niveau 1 devient obligatoire dès votre 75e anniversaire pour tout titulaire d'un permis de catégorie B, puis doit être renouvelé tous les deux ans."
+  },
+  {
+    q: "Quelle est la différence entre le niveau 1 et le niveau 2 ?",
+    a: "Le niveau 1 s'adresse aux particuliers dès 75 ans et porte sur la vue, l'audition et les réflexes de base. Le niveau 2 concerne les conducteurs professionnels et les catégories C/D : il comprend en plus un bilan cardiovasculaire et neurologique approfondi."
+  },
+  {
+    q: "Quels documents dois-je apporter au rendez-vous ?",
+    a: "Une pièce d'identité valide, vos lunettes ou appareils auditifs si vous en portez, la liste de vos traitements médicaux en cours et, pour le niveau 2, vos derniers résultats d'examens (ECG, bilan sanguin) si vous en disposez."
+  },
+  {
+    q: "Combien de temps dure l'examen ?",
+    a: "Comptez environ 30 minutes pour un examen niveau 1 et 45 minutes pour un examen niveau 2, formulaire administratif inclus."
+  },
+  {
+    q: "Que se passe-t-il après l'examen ?",
+    a: "Le médecin complète le formulaire officiel d'aptitude à la conduite, qui doit ensuite être transmis à l'Office cantonal des véhicules (OCV) de Genève selon la procédure en vigueur."
+  },
+  {
+    q: "Puis-je choisir n'importe lequel de vos trois centres ?",
+    a: "Oui, les trois cabinets — Cornavin, rue de Lausanne et Châtelaine — proposent les examens niveau 1 et niveau 2. Choisissez celui qui vous convient le mieux lors de la prise de rendez-vous."
+  },
+  {
+    q: "Le cabinet est-il reconnu par l'Office cantonal des véhicules (OCV) ?",
+    a: "Nos médecins sont habilités à réaliser les examens d'aptitude à la conduite selon les exigences de l'OCV Genève et remplissent les formulaires officiels requis."
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a }
+  }))
+};
+---
+<BaseLayout title={title} description={description} path="/faq/">
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <section class="section page-hero">
+    <div class="container">
+      <span class="eyebrow"><Icon name="check" size={14}/> FAQ</span>
+      <h1>Questions fréquentes sur l'examen médical du permis de conduire</h1>
+      <p class="hero-lead">Retrouvez les réponses aux questions les plus courantes. Pour toute autre demande, contactez-nous directement.</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container faq-list">
+      {faqs.map((f, i) => (
+        <details class="faq-item" open={i === 0}>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <section class="section cta-final">
+    <div class="container cta-final-inner">
+      <div>
+        <h2>Une autre question ?</h2>
+        <p>Notre équipe vous répond par téléphone ou via le formulaire de contact.</p>
+      </div>
+      <div class="hero-actions">
+        <a href="/contact/" class="btn btn-primary">Nous écrire</a>
+        <a href={`tel:${PHONE_TEL}`} class="btn btn-call"><Icon name="phone" size={16}/> {PHONE_DISPLAY}</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .hero-lead { max-width: 65ch; }
+  .faq-list { display: flex; flex-direction: column; gap: 1rem; max-width: 78ch; }
+  .faq-item {
+    background: var(--color-white);
+    border: 1px solid var(--color-line);
+    border-radius: 12px;
+    padding: 1.1rem 1.4rem;
+  }
+  .faq-item summary {
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--color-navy);
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+";
+    font-size: 1.4rem;
+    color: var(--color-blue);
+    margin-left: 1rem;
+    flex-shrink: 0;
+  }
+  .faq-item[open] summary::after { content: "–"; }
+  .faq-item p { margin-top: 0.9rem; margin-bottom: 0; }
+  .cta-final { background: var(--color-navy); border-radius: 20px; margin-inline: auto; max-width: calc(var(--container) + 3rem); }
+  .cta-final-inner { display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; }
+  .cta-final h2, .cta-final p { color: #fff; }
+  .cta-final p { color: #C9D8E4; max-width: 50ch; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+</style>

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /merci/
+
+Sitemap: https://examen-medical-permis.ch/sitemap-index.xml

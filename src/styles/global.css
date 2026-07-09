@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+:root {
+  /* Couleurs — bleu confiance médicale + accent rouge suisse, sobre */
+  --color-navy: #123456;
+  --color-blue: #2E6FA8;
+  --color-blue-light: #E7F0F8;
+  --color-bg: #F7FAFC;
+  --color-white: #FFFFFF;
+  --color-ink: #1B2A36;
+  --color-ink-soft: #4B5D6B;
+  --color-red: #C8232A;
+  --color-line: #DCE6EE;
+  --color-success: #2F7A5C;
+
+  --font-display: 'Archivo', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  --radius-card: 14px;
+  --radius-badge: 10px;
+  --shadow-card: 0 4px 20px rgba(18, 52, 86, 0.08);
+  --shadow-cta: 0 6px 18px rgba(46, 111, 168, 0.28);
+  --container: 1180px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background: var(--color-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--color-navy);
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: clamp(2rem, 4vw + 1rem, 3.1rem); font-weight: 800; }
+h2 { font-size: clamp(1.5rem, 2vw + 1rem, 2.15rem); font-weight: 700; }
+h3 { font-size: 1.25rem; font-weight: 700; }
+
+p { margin: 0 0 1em; color: var(--color-ink-soft); }
+a { color: var(--color-blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--color-red);
+  outline-offset: 2px;
+}
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-blue);
+  background: var(--color-blue-light);
+  border: 1px solid var(--color-line);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+
+/* --- Boutons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--color-blue);
+  color: var(--color-white);
+  box-shadow: var(--shadow-cta);
+}
+.btn-primary:hover { background: var(--color-navy); text-decoration: none; transform: translateY(-1px); }
+.btn-call {
+  background: var(--color-white);
+  color: var(--color-navy);
+  border-color: var(--color-navy);
+}
+.btn-call:hover { background: var(--color-navy); color: var(--color-white); text-decoration: none; }
+.btn-ghost {
+  background: transparent;
+  color: var(--color-navy);
+  border-color: var(--color-line);
+}
+.btn-ghost:hover { border-color: var(--color-blue); color: var(--color-blue); text-decoration: none; }
+.btn-block { width: 100%; }
+
+/* --- Carte "permis" (élément signature) ---
+   Motif de carte administrative perforée, inspiré des cartes de légitimation
+   et attestations officielles suisses. Utilisé pour les niveaux, badges et
+   points clés à travers le site. */
+.permit-card {
+  position: relative;
+  background: var(--color-white);
+  border: 1.5px solid var(--color-line);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 1.75rem;
+}
+.permit-card::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px dashed var(--color-line);
+  border-radius: 8px;
+  pointer-events: none;
+}
+.permit-card__stamp {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: var(--color-navy);
+  color: var(--color-white);
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.permit-card__stamp.stamp-red { background: var(--color-red); }
+
+.section { padding: clamp(3rem, 6vw, 6rem) 0; }
+.section-alt { background: var(--color-white); border-top: 1px solid var(--color-line); border-bottom: 1px solid var(--color-line); }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; }
+@media (max-width: 860px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+}
+
+.tel-link {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--color-navy);
+  color: white;
+  padding: 0.75rem 1.25rem;
+  z-index: 999;
+  border-radius: 0 0 8px 0;
+}
+.skip-link:focus { left: 0; }

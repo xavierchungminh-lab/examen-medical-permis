@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { EMAIL } from '../consts.js';
+
+const title = "Politique de Confidentialité";
+const description = "Politique de confidentialité et protection des données personnelles, conforme à la loi suisse sur la protection des données (nLPD).";
+---
+<BaseLayout title={title} description={description} path="/confidentialite/">
+  <section class="section legal">
+    <div class="container legal-container">
+      <h1>Politique de confidentialité</h1>
+      <p>
+        La protection de vos données personnelles est prise au sérieux. Cette politique décrit quelles données
+        sont collectées via ce site et comment elles sont traitées, conformément à la loi fédérale suisse sur
+        la protection des données (nLPD).
+      </p>
+
+      <h2>Données collectées</h2>
+      <p>Lorsque vous utilisez notre formulaire de contact, nous collectons :</p>
+      <ul>
+        <li>Votre nom et prénom</li>
+        <li>Votre numéro de téléphone et votre adresse e-mail</li>
+        <li>Le type d'examen souhaité et le centre choisi</li>
+        <li>Le contenu du message que vous nous adressez</li>
+      </ul>
+
+      <h2>Finalité du traitement</h2>
+      <p>
+        Ces données sont utilisées exclusivement pour traiter votre demande de rendez-vous et vous recontacter.
+        Elles ne sont ni vendues, ni cédées à des tiers à des fins commerciales.
+      </p>
+
+      <h2>Hébergement des données du formulaire</h2>
+      <p>
+        Les demandes envoyées via le formulaire de contact sont traitées par Netlify Forms (Netlify, Inc.),
+        notre prestataire d'hébergement. Les données peuvent transiter par des serveurs situés hors de Suisse ;
+        Netlify applique ses propres garanties contractuelles en matière de protection des données.
+      </p>
+
+      <h2>Durée de conservation</h2>
+      <p>
+        Les données transmises via le formulaire sont conservées le temps nécessaire au traitement de votre
+        demande de rendez-vous, puis supprimées ou archivées conformément aux obligations légales applicables
+        aux dossiers médicaux.
+      </p>
+
+      <h2>Vos droits</h2>
+      <p>
+        Conformément à la nLPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos
+        données. Pour exercer ces droits, contactez-nous à l'adresse {EMAIL}.
+      </p>
+
+      <h2>Cookies</h2>
+      <p>
+        Ce site n'utilise pas de cookies de suivi publicitaire. Seuls des cookies techniques strictement
+        nécessaires au fonctionnement du site peuvent être utilisés.
+      </p>
+
+      <h2>Contact</h2>
+      <p>Pour toute question relative à cette politique, écrivez-nous à {EMAIL}.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-container { max-width: 78ch; }
+  .legal h2 { margin-top: 2rem; }
+  .legal ul { color: var(--color-ink-soft); }
+</style>

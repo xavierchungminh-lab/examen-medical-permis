@@ -1,0 +1,39 @@
+---
+import { SITE_URL, PHONE_TEL, EMAIL, CENTRES } from '../consts.js';
+
+const locations = CENTRES.map(c => ({
+  "@type": "MedicalClinic",
+  "name": `Examen Médical Permis de Conduire — ${c.name}`,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": c.street,
+    "postalCode": c.zip,
+    "addressLocality": c.city,
+    "addressRegion": "GE",
+    "addressCountry": "CH"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": c.lat,
+    "longitude": c.lng
+  },
+  "telephone": PHONE_TEL,
+  "openingHours": c.hours
+}));
+
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "name": "Examen Médical Permis de Conduire Genève",
+  "url": SITE_URL,
+  "telephone": PHONE_TEL,
+  "email": EMAIL,
+  "medicalSpecialty": "Médecine du trafic — examens d'aptitude à la conduite",
+  "areaServed": {
+    "@type": "City",
+    "name": "Genève"
+  },
+  "department": locations
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />

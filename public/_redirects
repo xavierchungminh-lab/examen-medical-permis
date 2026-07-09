@@ -1,0 +1,17 @@
+# Redirige www vers le domaine racine
+https://www.examen-medical-permis.ch/*  https://examen-medical-permis.ch/:splat  301!
+
+# Anciennes URLs / synonymes plausibles vers les pages canoniques
+/niveau1              /niveau-1-permis-conduire/   301
+/niveau-1             /niveau-1-permis-conduire/   301
+/niveau2              /niveau-2-permis-conduire/   301
+/niveau-2             /niveau-2-permis-conduire/   301
+/centres              /centres-geneve/             301
+/nos-centres          /centres-geneve/             301
+/rendez-vous          /contact/                    301
+/rdv                  /contact/                    301
+/mentions             /mentions-legales/           301
+/confidentialite-donnees /confidentialite/          301
+
+# Page 404 personnalisée
+/*    /404.html   404

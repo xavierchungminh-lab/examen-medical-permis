@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import { PHONE_DISPLAY, PHONE_TEL } from '../consts.js';
+
+const title = "Page introuvable (404)";
+const description = "Cette page n'existe pas ou plus.";
+---
+<BaseLayout title={title} description={description} path="/404/" noindex={true}>
+  <section class="section thanks">
+    <div class="container">
+      <div class="permit-card thanks-card">
+        <span class="permit-card__stamp stamp-red">Erreur 404</span>
+        <Icon name="pin" size={32} />
+        <h1>Page introuvable</h1>
+        <p>La page que vous cherchez n'existe pas ou a été déplacée. Retrouvez toutes les informations sur nos examens médicaux depuis l'accueil.</p>
+        <div class="hero-actions">
+          <a href="/" class="btn btn-primary">Retour à l'accueil</a>
+          <a href={`tel:${PHONE_TEL}`} class="btn btn-call"><Icon name="phone" size={16}/> {PHONE_DISPLAY}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .thanks { display: flex; justify-content: center; padding: 5rem 1.5rem; }
+  .thanks-card { max-width: 560px; text-align: center; padding: 3rem 2rem; }
+  .thanks-card :global(> svg) { color: var(--color-red); margin-bottom: 1rem; }
+  .hero-actions { display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap; }
+</style>

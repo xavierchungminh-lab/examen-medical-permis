@@ -1,0 +1,203 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import { PHONE_DISPLAY, PHONE_TEL, CENTRES } from '../consts.js';
+
+const title = "Examen Médical pour Permis de Conduire à Genève (Niveau 1 & 2)";
+const description = "Passez votre examen médical d'aptitude à la conduite à Genève : niveau 1 (dès 75 ans) et niveau 2 (professionnels, catégories C/D). 3 cabinets, rendez-vous rapides.";
+---
+<BaseLayout title={title} description={description} path="/">
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow"><Icon name="shield" size={14}/> Cabinets médicaux agréés · Genève</span>
+        <h1>Examen médical pour permis de conduire à Genève (niveau 1 &amp; 2)</h1>
+        <p class="hero-lead">
+          Un examen d'aptitude à la conduite est requis par la loi suisse pour certains conducteurs.
+          Nos médecins réalisent le contrôle médical <strong>niveau 1</strong> (conducteurs de 75 ans et plus)
+          et <strong>niveau 2</strong> (professionnels, catégories C/D, transport de personnes) dans trois cabinets à Genève.
+        </p>
+        <div class="hero-actions">
+          <a href="/contact/" class="btn btn-primary">Prendre rendez-vous</a>
+          <a href={`tel:${PHONE_TEL}`} class="btn btn-call"><Icon name="phone" size={16}/> {PHONE_DISPLAY}</a>
+        </div>
+        <ul class="hero-trust">
+          <li><Icon name="check" size={16}/> Médecins reconnus par l'OCV Genève</li>
+          <li><Icon name="check" size={16}/> Rendez-vous sous 5 jours ouvrables</li>
+          <li><Icon name="check" size={16}/> 3 cabinets sur Genève</li>
+        </ul>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="permit-card hero-card">
+          <span class="permit-card__stamp">Aptitude à la conduite</span>
+          <Icon name="wheel" size={30} />
+          <p class="hero-card-title">Certificat médical<br/>Niveau 1 &amp; 2</p>
+          <div class="hero-card-row"><Icon name="cross" size={14}/> Contrôle de la vue, de l'ouïe et des réflexes</div>
+          <div class="hero-card-row"><Icon name="clock" size={14}/> Examen d'environ 30 à 45 minutes</div>
+          <div class="hero-card-row"><Icon name="check" size={14}/> Formulaire OCV rempli sur place</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <span class="eyebrow">Deux parcours distincts</span>
+      <h2>Quel examen concerne votre situation ?</h2>
+      <p class="section-intro">L'examen médical d'aptitude à la conduite se décline en deux niveaux, définis par l'Office fédéral des routes (OFROU) et appliqués par l'Office cantonal des véhicules de Genève (OCV).</p>
+
+      <div class="grid-2 level-grid">
+        <article class="permit-card level-card">
+          <span class="permit-card__stamp">Niveau 1</span>
+          <h3>Particuliers dès 75 ans</h3>
+          <p>Contrôle périodique obligatoire pour tout titulaire d'un permis de catégorie B dès son 75<sup>e</sup> anniversaire, renouvelé ensuite tous les deux ans.</p>
+          <ul class="level-points">
+            <li><Icon name="check" size={15}/> Vue, audition, mobilité, réflexes</li>
+            <li><Icon name="check" size={15}/> Questionnaire médical général</li>
+            <li><Icon name="check" size={15}/> Durée : environ 30 minutes</li>
+          </ul>
+          <a href="/niveau-1-permis-conduire/" class="btn btn-ghost">En savoir plus sur le niveau 1</a>
+        </article>
+
+        <article class="permit-card level-card">
+          <span class="permit-card__stamp stamp-red">Niveau 2</span>
+          <h3>Professionnels &amp; catégories C/D</h3>
+          <p>Examen renforcé exigé pour les chauffeurs professionnels, les catégories C/D (poids lourds, transport de personnes) et les titulaires du permis de taxi.</p>
+          <ul class="level-points">
+            <li><Icon name="check" size={15}/> Bilan cardiovasculaire et neurologique</li>
+            <li><Icon name="check" size={15}/> Tests de vigilance et d'attention</li>
+            <li><Icon name="check" size={15}/> Durée : environ 45 minutes</li>
+          </ul>
+          <a href="/niveau-2-permis-conduire/" class="btn btn-ghost">En savoir plus sur le niveau 2</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Déroulement</span>
+      <h2>Comment se déroule votre rendez-vous</h2>
+      <ol class="steps">
+        <li>
+          <span class="step-num">1</span>
+          <div>
+            <h3>Prise de rendez-vous</h3>
+            <p>Par téléphone ou via notre formulaire, dans le centre le plus proche de chez vous.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-num">2</span>
+          <div>
+            <h3>Consultation médicale</h3>
+            <p>Le médecin réalise les contrôles requis pour votre niveau (1 ou 2) et complète le formulaire officiel.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-num">3</span>
+          <div>
+            <h3>Remise du rapport</h3>
+            <p>Le rapport médical vous est remis, prêt à être transmis à l'Office cantonal des véhicules.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <span class="eyebrow">Nos centres</span>
+      <h2>Trois cabinets à Genève</h2>
+      <div class="grid-3">
+        {CENTRES.map(c => (
+          <article class="permit-card centre-card-mini">
+            <h3><Icon name="pin" size={16}/> {c.name}</h3>
+            <p>{c.street}<br/>{c.zip} {c.city}</p>
+            <p class="centre-hours"><Icon name="clock" size={14}/> {c.hours}</p>
+          </article>
+        ))}
+      </div>
+      <a href="/centres-geneve/" class="btn btn-ghost" style="margin-top:1.5rem;">Voir tous les centres et itinéraires</a>
+    </div>
+  </section>
+
+  <section class="section cta-final">
+    <div class="container cta-final-inner">
+      <div>
+        <h2>Besoin de passer votre examen médical ?</h2>
+        <p>Nos équipes vous répondent du lundi au vendredi pour organiser votre rendez-vous rapidement, dans le centre de votre choix.</p>
+      </div>
+      <div class="hero-actions">
+        <a href="/contact/" class="btn btn-primary">Prendre rendez-vous</a>
+        <a href={`tel:${PHONE_TEL}`} class="btn btn-call"><Icon name="phone" size={16}/> {PHONE_DISPLAY}</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .hero { padding: clamp(2.5rem, 6vw, 5rem) 0 1rem; }
+  .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center; }
+  @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
+
+  .hero-lead { font-size: 1.08rem; max-width: 46ch; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1.75rem 0; }
+  .hero-trust { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+  .hero-trust li { display: flex; align-items: center; gap: 0.5rem; color: var(--color-navy); font-weight: 600; font-size: 0.94rem; }
+  .hero-trust :global(svg) { color: var(--color-success); flex-shrink: 0; }
+
+  .hero-card {
+    max-width: 380px;
+    margin-left: auto;
+    color: var(--color-navy);
+  }
+  .hero-card :global(> svg) { color: var(--color-blue); margin-bottom: 0.75rem; }
+  .hero-card-title { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; color: var(--color-navy); margin-bottom: 1.1rem; }
+  .hero-card-row { display: flex; align-items: center; gap: 0.55rem; font-size: 0.9rem; color: var(--color-ink-soft); margin-bottom: 0.6rem; }
+  .hero-card-row :global(svg) { color: var(--color-blue); flex-shrink: 0; }
+
+  .section-intro { max-width: 70ch; }
+
+  .level-grid { margin-top: 2rem; }
+  .level-card { padding-top: 2.25rem; }
+  .level-points { list-style: none; padding: 0; margin: 1.25rem 0; display: flex; flex-direction: column; gap: 0.55rem; }
+  .level-points li { display: flex; align-items: center; gap: 0.5rem; font-size: 0.92rem; color: var(--color-ink-soft); }
+  .level-points :global(svg) { color: var(--color-blue); flex-shrink: 0; }
+
+  .steps { list-style: none; margin: 2rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 1.75rem; max-width: 60ch; }
+  .steps li { display: flex; gap: 1.25rem; align-items: flex-start; }
+  .step-num {
+    flex-shrink: 0;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--color-blue-light);
+    color: var(--color-navy);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-mono); font-weight: 600;
+    border: 1.5px solid var(--color-line);
+  }
+
+  .centre-card-mini h3 { display: flex; align-items: center; gap: 0.5rem; font-size: 1.05rem; }
+  .centre-card-mini :global(svg) { color: var(--color-blue); }
+  .centre-hours { font-size: 0.85rem; color: var(--color-ink-soft); margin: 0; }
+
+  .cta-final {
+    background: var(--color-navy);
+    border-radius: 20px;
+    margin: 0 1.5rem;
+    max-width: calc(var(--container) + 3rem);
+    margin-inline: auto;
+  }
+  .cta-final-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .cta-final h2, .cta-final p { color: #fff; }
+  .cta-final p { color: #C9D8E4; max-width: 50ch; }
+</style>

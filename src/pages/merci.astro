@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import { PHONE_DISPLAY, PHONE_TEL } from '../consts.js';
+
+const title = "Merci pour votre demande";
+const description = "Votre demande de rendez-vous a bien été envoyée. Notre équipe vous recontacte sous 24 à 48h ouvrées.";
+---
+<BaseLayout title={title} description={description} path="/merci/" noindex={true}>
+  <section class="section thanks">
+    <div class="container">
+      <div class="permit-card thanks-card">
+        <span class="permit-card__stamp">Demande envoyée</span>
+        <Icon name="check" size={32} />
+        <h1>Merci, votre demande a bien été reçue</h1>
+        <p>Notre équipe vous recontacte sous 24 à 48h ouvrées pour confirmer votre rendez-vous. Pour toute urgence, vous pouvez nous appeler directement.</p>
+        <div class="hero-actions">
+          <a href="/" class="btn btn-ghost">Retour à l'accueil</a>
+          <a href={`tel:${PHONE_TEL}`} class="btn btn-primary"><Icon name="phone" size={16}/> {PHONE_DISPLAY}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .thanks { display: flex; justify-content: center; padding: 5rem 1.5rem; }
+  .thanks-card { max-width: 560px; text-align: center; padding: 3rem 2rem; }
+  .thanks-card :global(> svg) { color: var(--color-success); margin-bottom: 1rem; }
+  .hero-actions { display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap; }
+</style>
