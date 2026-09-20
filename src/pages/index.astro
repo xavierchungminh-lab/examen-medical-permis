@@ -114,6 +114,7 @@ const description = "Passez votre examen médical d'aptitude à la conduite à G
         {CENTRES.map(c => (
           <article class="permit-card centre-card-mini">
             <h3><Icon name="pin" size={16}/> {c.name}</h3>
+            <p class="centre-org-mini">{c.org}</p>
             <p>{c.street}<br/>{c.zip} {c.city}</p>
             <p class="centre-hours"><Icon name="clock" size={14}/> {c.hours}</p>
           </article>
@@ -182,6 +183,7 @@ const description = "Passez votre examen médical d'aptitude à la conduite à G
 
   .centre-card-mini h3 { display: flex; align-items: center; gap: 0.5rem; font-size: 1.05rem; }
   .centre-card-mini :global(svg) { color: var(--color-blue); }
+  .centre-org-mini { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-blue); margin: 0.1rem 0 0.35rem; }
   .centre-hours { font-size: 0.85rem; color: var(--color-ink-soft); margin: 0; }
 
   .cta-final {

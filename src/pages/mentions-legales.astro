@@ -16,7 +16,7 @@ const description = "Mentions légales du site examen-medical-permis.ch : édite
         exploités à titre indépendant, dont les adresses sont :
       </p>
       <ul>
-        {CENTRES.map(c => (<li>{c.name} — {c.street}, {c.zip} {c.city}</li>))}
+        {CENTRES.map(c => (<li>{c.org} · {c.name} — {c.street}, {c.zip} {c.city}</li>))}
       </ul>
       <p>Téléphone : {PHONE_DISPLAY} — E-mail : {EMAIL}</p>
       <p>

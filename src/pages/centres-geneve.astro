@@ -24,6 +24,7 @@ const description = "Trois cabinets médicaux à Genève pour votre examen d'apt
           <div class="centre-card-body">
             <div>
               <h2><Icon name="pin" size={18}/> {c.name}</h2>
+              <p class="centre-org">{c.org}</p>
               <p class="centre-address">{c.street}<br/>{c.zip} {c.city}, Suisse</p>
               <p class="centre-hours"><Icon name="clock" size={15}/> {c.hours}</p>
               <p class="centre-note">{c.note}</p>
@@ -62,6 +63,7 @@ const description = "Trois cabinets médicaux à Genève pour votre examen d'apt
   @media (max-width: 780px) { .centre-card-body { grid-template-columns: 1fr; } }
   .centre-card h2 { display: flex; align-items: center; gap: 0.5rem; font-size: 1.3rem; }
   .centre-card :global(h2 svg) { color: var(--color-blue); }
+  .centre-org { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-blue); margin: 0.15rem 0 0.5rem; }
   .centre-address { font-weight: 600; color: var(--color-navy); }
   .centre-hours { display: flex; align-items: center; gap: 0.5rem; color: var(--color-ink-soft); font-size: 0.92rem; }
   .centre-note { font-size: 0.92rem; }

@@ -26,7 +26,7 @@ const description = "Contactez-nous pour prendre rendez-vous pour votre examen m
         <h3 class="contact-sub">Nos centres</h3>
         <ul class="contact-centres">
           {CENTRES.map(c => (
-            <li><Icon name="pin" size={15}/> <strong>{c.name}</strong> — {c.street}, {c.zip} {c.city}</li>
+            <li><Icon name="pin" size={15}/> <strong>{c.org} · {c.name}</strong> — {c.street}, {c.zip} {c.city}</li>
           ))}
         </ul>
         <a href="/centres-geneve/" class="btn btn-ghost">Voir les horaires et itinéraires</a>
