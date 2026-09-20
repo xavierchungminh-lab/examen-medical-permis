@@ -13,10 +13,8 @@ const path = Astro.url.pathname;
 ---
 <header class="site-header">
   <div class="container header-inner">
-    <a href="/" class="brand" aria-label="Examen Médical Permis de Conduire Genève — accueil">
-      <span class="brand-icon">
-        <Icon name="cross" size={16} />
-      </span>
+    <a href="/" class="brand" aria-label="MedSpaces — Examen Médical Permis de Conduire Genève — accueil">
+      <img src="/logo-medspaces.png" alt="MedSpaces Health Network" class="brand-logo" width="500" height="216" />
       <span class="brand-text">
         Examen Médical<br/><span class="brand-sub">Permis de conduire · Genève</span>
       </span>
@@ -83,16 +81,11 @@ const path = Astro.url.pathname;
     line-height: 1.25;
   }
   .brand:hover { text-decoration: none; }
-  .brand-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    border-radius: 9px;
-    background: var(--color-navy);
-    color: var(--color-white);
+  .brand-logo {
+    height: 40px;
+    width: auto;
     flex-shrink: 0;
+    display: block;
   }
   .brand-sub {
     display: block;
@@ -101,6 +94,9 @@ const path = Astro.url.pathname;
     font-size: 0.72rem;
     color: var(--color-ink-soft);
     letter-spacing: 0.01em;
+  }
+  @media (max-width: 480px) {
+    .brand-text { display: none; }
   }
   .main-nav ul {
     list-style: none;

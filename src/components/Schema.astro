@@ -1,9 +1,10 @@
 ---
-import { SITE_URL, PHONE_TEL, EMAIL, CENTRES } from '../consts.js';
+import { SITE_URL, PHONE_TEL, EMAIL, CENTRES, ORG_NAME } from '../consts.js';
 
 const locations = CENTRES.map(c => ({
   "@type": "MedicalClinic",
-  "name": `Examen Médical Permis de Conduire — ${c.name}`,
+  "name": `${c.org} — Examen Médical Permis de Conduire — ${c.name}`,
+  "alternateName": c.org,
   "address": {
     "@type": "PostalAddress",
     "streetAddress": c.street,
@@ -25,6 +26,7 @@ const orgSchema = {
   "@context": "https://schema.org",
   "@type": "MedicalBusiness",
   "name": "Examen Médical Permis de Conduire Genève",
+  "alternateName": ORG_NAME,
   "url": SITE_URL,
   "telephone": PHONE_TEL,
   "email": EMAIL,

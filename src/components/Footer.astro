@@ -21,7 +21,7 @@ const year = new Date().getFullYear();
         {CENTRES.map(c => (
           <li>
             <Icon name="pin" size={14} />
-            <span>{c.name} — {c.street}, {c.zip} {c.city}</span>
+            <span>{c.org} · {c.name} — {c.street}, {c.zip} {c.city}</span>
           </li>
         ))}
       </ul>
