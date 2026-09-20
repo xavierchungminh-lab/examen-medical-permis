@@ -1,4 +1,5 @@
 export const SITE_NAME = "Examen Médical Permis de Conduire Genève";
+export const ORG_NAME = "Medspaces";
 export const SITE_URL = "https://examen-medical-permis.ch";
 export const PHONE_DISPLAY = "022 555 77 99";
 export const PHONE_TEL = "+41225557799";
@@ -8,6 +9,7 @@ export const CENTRES = [
   {
     id: "cornavin",
     name: "Centre Cornavin",
+    org: "Medspaces",
     street: "11 rue de Cornavin",
     zip: "1201",
     city: "Genève",
@@ -19,6 +21,7 @@ export const CENTRES = [
   {
     id: "lausanne",
     name: "Centre Rue de Lausanne",
+    org: "Medspaces",
     street: "82B rue de Lausanne",
     zip: "1202",
     city: "Genève",
@@ -30,6 +33,7 @@ export const CENTRES = [
   {
     id: "chatelaine",
     name: "Centre Châtelaine",
+    org: "Medspaces",
     street: "Place Casa Bamba 1",
     zip: "1219",
     city: "Châtelaine",
